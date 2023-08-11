@@ -5,6 +5,7 @@ function countTokens(str) {
 let tokenCounterDiv = null;
 let toggleButton = null;
 let inputField = document.querySelector('textarea');
+let isHidden = true; 
 
 function setupTokenCounter() {
     if (inputField) {
@@ -43,13 +44,19 @@ function setupTokenCounter() {
         });
 
         inputField.parentElement.appendChild(tokenCounterDiv);
-        tokenCounterDiv.appendChild(toggleButton);
+        if (!isHidden) {
+            tokenCounterDiv.appendChild(toggleButton);
+        }
     }
 }
 
 function updateTokenCount() {
     tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
-    tokenCounterDiv.appendChild(toggleButton); 
+    if (!isHidden) {
+        tokenCounterDiv.appendChild(toggleButton); 
+        console.log("Ce poulet est bon");
+    }
+    console.log("connard");
 }
 
 setupTokenCounter();
