@@ -5,7 +5,8 @@ function countTokens(str) {
 let tokenCounterDiv = null;
 let toggleButton = null;
 let inputField = document.querySelector('textarea');
-let isHidden = true; 
+let isHidden = false; 
+let isActivedByDefault = false;
 
 function setupTokenCounter() {
     if (inputField) {
@@ -36,10 +37,12 @@ function setupTokenCounter() {
                 toggleButton.textContent = 'ON';
                 toggleButton.style.backgroundColor = '#2ECC40'; // Vert pour ON
                 inputField.addEventListener('input', updateTokenCount);
+                isActivedByDefault = false;
             } else {
                 toggleButton.textContent = 'OFF';
                 toggleButton.style.backgroundColor = '#FF4136'; // Rouge pour OFF
                 inputField.removeEventListener('input', updateTokenCount);
+                isActivedByDefault = true;
             }
         });
 
@@ -47,12 +50,16 @@ function setupTokenCounter() {
         if (!isHidden) {
             tokenCounterDiv.appendChild(toggleButton);
         }
+
+        if (isActivedByDefault) {
+            inputField.addEventListener('input', updateTokenCount);
+        }
     }
 }
 
 function updateTokenCount() {
     tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
-    if (!isHidden) {
+    if (!isHidden && isActivedByDefault) {
         tokenCounterDiv.appendChild(toggleButton); 
         console.log("Ce poulet est bon");
     }
