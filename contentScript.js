@@ -75,6 +75,7 @@ function setupTokenCounter() {
 
 function updateTokenCount() {
     tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
+    tokenCounterDiv.appendChild(toggleButton); 
     if (!isHidden && isActivedByDefault) {
         tokenCounterDiv.appendChild(toggleButton); 
     }
