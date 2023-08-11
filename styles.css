@@ -1,26 +1,39 @@
 body {
-    width: '50em';
-    height: '25em';
+    width: 50em;
+    height: 25em;
     font-family: Arial, sans-serif;
     background-color: aquamarine;
-    margin: 0; 
+    margin: 0;
     padding: 0;
-    overflow: hidden; 
-    position: relative; 
+    overflow: hidden;
+    position: relative;
 }
 
 #popup-content {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
+    display: flex;
+    flex-direction: column; /* Utiliser une disposition à une colonne */
+    justify-content: center; /* Centrer verticalement les éléments */
+    align-items: center; /* Centrer horizontalement les éléments */
+    height: 100%; /* Hauteur totale de la fenêtre */
 }
 
-#icon-image {
-    height: 100%;
+#checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#icon {
+    height: 100px;
     width: auto;
-    margin-right: 10px; 
+    margin: 10px;
 }
 
 p {
     text-align: center;
+    margin: 0; /* Supprimer les marges par défaut du paragraphe */
+}
+
+label {
+    margin-left: 5px;
 }
