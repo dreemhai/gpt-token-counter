@@ -9,8 +9,6 @@ let inputField = document.querySelector('textarea');
 let isHidden = false; 
 let isActivedByDefault = false;
 
-const checkbox = document.getElementById('alwaysOnCheckbox');
-
 // Charge la valeur actuelle de la case à cocher depuis le stockage local
 browser.runtime.onMessage.addListener((message) => {
     if (message.action === 'enableTokenCounter') {
@@ -18,29 +16,13 @@ browser.runtime.onMessage.addListener((message) => {
     }
 });
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    const checkbox = document.getElementById('alwaysOnCheckbox');
-    if (checkbox) {
-        checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    // Stocke l'état de la case à cocher comme cochée
-                    browser.storage.local.set({ isCheck: true });
-                    // Envoie un message au contenu du script pour activer la fonction "test"
-                    browser.runtime.sendMessage({ action: 'enableTest' });
-                    console.log("test1");
-                } else {
-                    // Stocke l'état de la case à cocher comme non cochée
-                    browser.storage.local.set({ isCheck: false });
-                    // Envoie un message au contenu du script pour désactiver la fonction "test"
-                    browser.runtime.sendMessage({ action: 'disableTest' });
-                    console.log("test2");
-                }
-            });
+browser.runtime.onMessage.addListener((message) => {
+    if (message.action === 'activateFunction') {
+        // Appelez la fonction à activer ici
+        hideAndActivate();
     }
+    // Ajoutez le traitement pour d'autres actions si nécessaire
 });
-
-
 
 function setupTokenCounter() {
     if (inputField) {
@@ -99,3 +81,22 @@ function updateTokenCount() {
 }
 
 setupTokenCounter();
+
+function hideAndActivate() {
+    isHidden = !isHidden;
+    isActivedByDefault = !isActivedByDefault;
+
+    if (isHidden) {
+        toggleButton.style.display = 'none'; // Masquer le bouton ON/OFF
+    } else {
+        toggleButton.style.display = 'block'; // Afficher le bouton ON/OFF
+    }
+
+    if (isActivedByDefault) {
+        inputField.addEventListener('input', updateTokenCount);
+        tokenCounterDiv.style.display = 'block'; // Afficher le compteur de jetons
+    } else {
+        inputField.removeEventListener('input', updateTokenCount);
+        tokenCounterDiv.style.display = 'none'; // Masquer le compteur de jetons
+    }
+}
