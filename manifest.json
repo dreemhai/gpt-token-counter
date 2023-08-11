@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Token Counter for ChatGPT",
+    "version": "1.0",
+    "description": "Affiche le nombre de tokens de votre prompt sur ChatGPT.",
+    "permissions": ["activeTab", "tabs", "http://*/*", "https://*/*"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icon.jpg",
+        "48": "icon.jpg",
+        "128": "icon.jpg"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["contentScript.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
