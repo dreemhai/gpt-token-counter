@@ -24,6 +24,12 @@ browser.runtime.onMessage.addListener((message) => {
     // Ajoutez le traitement pour d'autres actions si nécessaire
 });
 
+browser.runtime.onMessage.addListener((message) => {
+    if (message.action === 'toggleButtonClick') {
+        toggleButtonClick();
+    }
+});
+
 function setupTokenCounter() {
     if (inputField) {
         tokenCounterDiv = document.createElement('div');
@@ -100,4 +106,19 @@ function hideAndActivate() {
         inputField.removeEventListener('input', updateTokenCount);
         tokenCounterDiv.style.display = 'none'; // Masquer le compteur de jetons
     }
+}
+
+function toggleButtonClick() {
+    isActivedByDefault = !isActivedByDefault;
+
+    if (isActivedByDefault) {
+        inputField.addEventListener('input', updateTokenCount);
+        tokenCounterDiv.style.display = 'block'; // Afficher le compteur de jetons
+    }
+    else {
+        inputField.removeEventListener('input', updateTokenCount);
+        tokenCounterDiv.style.display = 'none'; // Masquer le compteur de jetons
+    }
+
+    updateTokenCount();
 }
