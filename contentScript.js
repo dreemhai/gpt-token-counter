@@ -25,6 +25,10 @@ function setupTokenCounter() {
         toggleButton.style.marginLeft = '10px';
         toggleButton.style.cursor = 'pointer';
         toggleButton.style.borderRadius = '5px';
+        toggleButton.style.width = '3em';        // Largeur fixe basée sur le contenu le plus large
+        toggleButton.style.textAlign = 'center';   // Centre le texte horizontalement
+        toggleButton.style.lineHeight = '1.5';     // Pour le centrage vertical
+
 
         toggleButton.addEventListener('click', function() {
             if (toggleButton.textContent === 'OFF') {
