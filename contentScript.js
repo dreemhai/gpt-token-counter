@@ -7,7 +7,7 @@ let tokenCounterDiv = null;
 let toggleButton = null;
 let inputField = document.querySelector('textarea');
 let isHidden = false; 
-let isActivedByDefault = false;
+let isActivedByDefault = true;
 
 // Charge la valeur actuelle de la case à cocher depuis le stockage local
 browser.runtime.onMessage.addListener((message) => {
@@ -69,9 +69,6 @@ function setupTokenCounter() {
         });
 
         inputField.parentElement.appendChild(tokenCounterDiv);
-        if (!isHidden) {
-            tokenCounterDiv.appendChild(toggleButton);
-        }
 
         if (isActivedByDefault) {
             inputField.addEventListener('input', updateTokenCount);
@@ -80,10 +77,10 @@ function setupTokenCounter() {
 }
 
 function updateTokenCount() {
-    tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
-    tokenCounterDiv.appendChild(toggleButton); 
+    
+
     if (!isHidden && isActivedByDefault) {
-        tokenCounterDiv.appendChild(toggleButton); 
+        tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
     }
 }
 
