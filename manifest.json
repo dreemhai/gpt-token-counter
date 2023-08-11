@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Token Counter for ChatGPT",
-    "version": "1.0",
+    "version": "2.0",
     "description": "Show the number of tokens in the current prompt for ChatGPT",
     "permissions": ["activeTab", "storage"],
     "background": {
