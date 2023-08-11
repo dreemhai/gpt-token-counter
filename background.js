@@ -1,6 +1,5 @@
+
 browser.browserAction.onClicked.addListener((tab) => {
-    browser.tabs.executeScript(tab.id, {
-      file: "contentScript.js"
-    });
-  });
-  
+    // Envoie un message au contenu du script pour activer la fonctionnalité
+    browser.tabs.sendMessage(tab.id, { action: 'enableTokenCounter' });
+});

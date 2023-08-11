@@ -1,8 +1,20 @@
-// Récupérer la référence à la case à cocher
-let alwaysOnCheckbox = document.getElementById('always-on-checkbox');
 
-// Écouter les changements d'état de la case à cocher
-alwaysOnCheckbox.addEventListener('change', function() {
-    // Enregistrer l'état actuel de la case à cocher dans le stockage local
-    browser.storage.local.set({ alwaysOn: alwaysOnCheckbox.checked });
+const checkbox = document.getElementById('alwaysOnCheckbox');
+
+// Charge la valeur actuelle de la case à cocher depuis le stockage local
+browser.storage.local.get('isCheck').then(result => {
+    if (result.isCheck) {
+        checkbox.checked = true;
+    }
+});
+
+// Écoute les changements de la case à cocher
+checkbox.addEventListener('change', () => {
+    if (checkbox.checked) {
+        // Stocke l'état de la case à cocher comme cochée
+        browser.storage.local.set({ isCheck: true });
+    } else {
+        // Stocke l'état de la case à cocher comme non cochée
+        browser.storage.local.set({ isCheck: false });
+    }
 });
