@@ -37,3 +37,18 @@ p {
 label {
     margin-left: 5px;
 }
+
+.toggle-button {
+    background-color: #FF4136;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 3em;
+    text-align: center;
+    line-height: 1.5;
+}
+.toggle-button.on {
+    background-color: #2ECC40;
+}

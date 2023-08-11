@@ -19,3 +19,16 @@ checkbox.addEventListener('change', () => {
         browser.runtime.sendMessage({ action: 'activateFunction' });
     }
 });
+
+// Écoute les clics sur le bouton ON/OFF
+toggleButton.addEventListener('click', () => {
+    if (toggleButton.classList.contains('on')) {
+        toggleButton.classList.remove('on');
+        toggleButton.textContent = 'OFF';
+        browser.runtime.sendMessage({ action: 'toggleButtonClick' });
+    } else {
+        toggleButton.classList.add('on');
+        toggleButton.textContent = 'ON';
+        browser.runtime.sendMessage({ action: 'toggleButtonClick' });
+    }
+});
