@@ -1,4 +1,4 @@
-# tokenShowerGPT
+# tokenCounterChatGPT
 This firefox extension show the number of tokens in the current prompt for ChatGPT.
 
 Download here: https://addons.mozilla.org/en-US/firefox/addon/token-counter-for-chatgpt/ (The extension is not yet available, wait !)
