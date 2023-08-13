@@ -63,9 +63,20 @@ function setupTokenCounter() {
     }
 }
 
-function updateTokenCount() {
-    
+function removeTokenCounter() {
+    if (tokenCounterDiv && tokenCounterDiv.parentNode) {
+        tokenCounterDiv.parentNode.removeChild(tokenCounterDiv);
+        tokenCounterDiv = null;
+    }
+}
 
+function createTokenCounter() {
+    inputField = document.querySelector('textarea');
+    setupTokenCounter();
+
+}
+
+function updateTokenCount() {
     if (!isHidden && isActivedByDefault) {
         tokenCounterDiv.textContent = 'Tokens: ' + countTokens(inputField.value);
     }
@@ -106,3 +117,13 @@ function toggleButtonClick() {
 
     updateTokenCount();
 }
+
+let currentUrl = window.location.href;
+
+setInterval(() => {
+  if (window.location.href !== currentUrl) {
+    currentUrl = window.location.href;
+    removeTokenCounter();
+    createTokenCounter();
+  }
+}, 4000); // Vérifiez toutes les 500 millisecondes
