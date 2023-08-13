@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <!-- Created on Fri, 10 Feb 2023 11:35:18 GMT -->
+  <ShortName>ChatGPT</ShortName>
+  <Description>Search ChatGPT</Description>
+  <Url type="text/html" method="get" template="https://chat.openai.com/?q={searchTerms}"/>
+  <Image width="16" height="16">https://mycroftproject.com/updateos.php/id0/chatgpt.ico</Image>
+  <Developer>nobody</Developer>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
